@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Cheat Sheet</title>
+    <!-- Fallback font: Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Java Cheat Sheet</h1>
+        <button id="theme-toggle" aria-label="Toggle Theme">
+            <span class="theme-icon">☀️</span>
+        </button>
+    </header>
+    <nav>
+        <a href="#core-java">Core Java</a>
+        <a href="#oop-concepts">OOP Concepts</a>
+        <a href="#arrays-collections">Arrays & Collections</a>
+        <a href="#algorithms">Algorithms</a>
+        <a href="#javafx-gui">JavaFX GUI</a>
+        <a href="#advanced-topics">Advanced Topics</a>
+        <a href="#useful-libraries">Useful Libraries</a>
+        <a href="#best-practices">Best Practices</a>
+        <a href="#common-errors">Common Errors & Fixes</a>
+    </nav>
+    <main>
+        <section id="core-java">
+            <h2>Core Java</h2>
+            <h3>Variables & Data Types</h3>
+            <p>Primitive: byte, short, int, long, float, double, boolean, char<br>
+            Reference: String, Arrays, Objects</p>
+            <div class="code-block">
+                <pre><code class="language-java">int age = 25; // Integer
+double pi = 3.1416; // Floating-point
+boolean isStudent = true; // Boolean
+char grade = 'A'; // Character</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>Operators</h3>
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Operators</th>
+                    <th>Example</th>
+                    <th>Result</th>
+                </tr>
+                <tr>
+                    <td>Arithmetic</td>
+                    <td>+, -, *, /, %</td>
+                    <td>5 % 2</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Relational</td>
+                    <td>==, !=, >, <, >=, <=</td>
+                    <td>3 < 5</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>Logical</td>
+                    <td>&&, ||, !</td>
+                    <td>!(3 < 5)</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>Assignment</td>
+                    <td>=, +=, -=, *=, /=</td>
+                    <td>x += 2</td>
+                    <td>x+2</td>
+                </tr>
+                <tr>
+                    <td>Ternary</td>
+                    <td>condition ? a : b</td>
+                    <td>x > 0 ? x : 0</td>
+                    <td>x</td>
+                </tr>
+            </table>
+
+            <h3>Control Structures</h3>
+            <div class="code-block">
+                <pre><code class="language-java">// if-else
+if (age >= 18) {
+    System.out.println("Adult");
+} else {
+    System.out.println("Minor");
+}
+
+// for loop
+for(int i = 0; i < 5; i++) {
+    System.out.println(i);
+}
+
+// Enhanced for (arrays/collections)
+for(String name : names) {
+    System.out.println(name);
+}
+
+// while loop
+while (age < 21) {
+    System.out.println("Not eligible to vote");
+    age++;
+}
+
+// switch case
+int day = 1;
+switch(day) {
+    case 1: System.out.println("Monday"); break;
+    case 2: System.out.println("Tuesday"); break;
+    default: System.out.println("Unknown");
+}
+
+// break/continue
+for(int i = 0; i < 10; i++) {
+    if (i == 5) continue; // Skip i=5
+    if (i == 7) break;    // Exit loop
+}</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>Exception Handling</h3>
+            <div class="code-block">
+                <pre><code class="language-java">try {
+    int[] numbers = {1, 2, 3};
+    System.out.println(numbers[5]); // ArrayIndexOutOfBoundsException
+} catch (Exception e) {
+    e.printStackTrace();
+}</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+        </section>
+
+        <section id="oop-concepts">
+            <h2>OOP Concepts</h2>
+            <h3>Classes & Objects</h3>
+            <div class="code-block">
+                <pre><code class="language-java">public class Student {
+    private String name; // Encapsulation
+    private int age;
+
+    public Student(String name, int age) { // Constructor
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() { return name; } // Getter
+    public void setName(String name) { this.name = name; } // Setter
+}
+
+// Usage
+Student alice = new Student("Alice", 22);</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>Inheritance</h3>
+            <div class="code-block">
+                <pre><code class="language-java">class Vehicle {
+    void start() { System.out.println("Engine starting"); }
+}
+class Car extends Vehicle {
+    void accelerate() { System.out.println("Accelerating"); }
+}</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>Polymorphism</h3>
+            <div class="code-block">
+                <pre><code class="language-java">Vehicle car = new Car(); // Upcasting
+car.start(); // Outputs "Engine starting"</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>Interfaces & Abstract Classes</h3>
+            <div class="code-block">
+                <pre><code class="language-java">interface Driveable {
+    void drive();
+    void park();
+}
+
+abstract class ElectricVehicle {
+    abstract void charge(); // Abstract method
+}</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+        </section>
+
+        <section id="arrays-collections">
+            <h2>Arrays & Collections</h2>
+            <h3>Arrays</h3>
+            <div class="code-block">
+                <pre><code class="language-java">int[] marks = {85, 90, 78}; // Declaration
+int length = marks.length; // 3
+double avg = Arrays.stream(marks).average().orElse(0); // Average calculation</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>ArrayList</h3>
+            <div class="code-block">
+                <pre><code class="language-java">List<String> names = new ArrayList<>();
+names.add("John"); // Add element
+System.out.println(names.get(0)); // "John"</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>HashMap</h3>
+            <div class="code-block">
+                <pre><code class="language-java">Map<String, Integer> ageMap = new HashMap<>();
+ageMap.put("Alice", 30);
+System.out.println(ageMap.get("Alice")); // 30</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+        </section>
+
+        <section id="algorithms">
+            <h2>Algorithms</h2>
+            <h3>Sorting</h3>
+            <div class="code-block">
+                <pre><code class="language-java">Arrays.sort(marks); // Ascending order using Algorithm.sort()</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>Search</h3>
+            <div class="code-block">
+                <pre><code class="language-java">int index = Arrays.binarySearch(sortedMarks, 90); // Index of found element</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>Recursion</h3>
+            <div class="code-block">
+                <pre><code class="language-java">int factorial(int n) {
+    return n == 0 ? 1 : n * factorial(n - 1);
+}</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+        </section>
+
+        <section id="javafx-gui">
+            <h2>JavaFX GUI</h2>
+            <h3>Components</h3>
+            <div class="code-block">
+                <pre><code class="language-java">@FXML
+private Button submitButton;
+
+@FXML
+private void handleButtonAction(ActionEvent event) {
+    System.out.println("Button clicked!");
+}</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>FXML</h3>
+            <div class="code-block">
+                <pre><code class="language-xml"><Button fx:id="submitButton" text="Submit" onAction="#handleButtonAction"/></code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+        </section>
+
+        <section id="advanced-topics">
+            <h2>Advanced Topics</h2>
+            <h3>Multithreading</h3>
+            <div class="code-block">
+                <pre><code class="language-java">new Thread(() -> System.out.println("Hello from thread")).start();</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>Annotations</h3>
+            <div class="code-block">
+                <pre><code class="language-java">@Deprecated
+public void oldMethod() { }</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+        </section>
+
+        <section id="useful-libraries">
+            <h2>Useful Libraries</h2>
+            <h3>Apache Commons</h3>
+            <div class="code-block">
+                <pre><code class="language-java">// org.apache.commons.lang3.StringUtils
+String reversed = StringUtils.reverse("Java");</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>JDBC</h3>
+            <div class="code-block">
+                <pre><code class="language-java">try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/database")) {
+    Statement stmt = conn.createStatement();
+    ResultSet rs = stmt.executeQuery("SELECT * FROM users");
+}</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+        </section>
+
+        <section id="best-practices">
+            <h2>Best Practices</h2>
+            <h3>Coding Style</h3>
+            <p>Use camelCase for variable names, PascalCase for classes, and ALL_CAPS for constants.</p>
+            <h3>Debugging</h3>
+            <p>Use System.out.println() for quick checks or a debugger like IntelliJ’s.</p>
+            <h3>Testing</h3>
+            <div class="code-block">
+                <pre><code class="language-java">@Test
+public void testAddition() {
+    assertEquals(5, Calculator.add(2, 3));
+}</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+        </section>
+
+        <section id="common-errors">
+            <h2>Common Errors & Fixes</h2>
+            <h3>NullPointerException</h3>
+            <div class="code-block">
+                <pre><code class="language-java">String name = null;
+System.out.println(name.length()); // Causes NPE
+// Fix: Check for null before using
+if (name != null) { ... }</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>ArrayIndexOutOfBoundsException</h3>
+            <div class="code-block">
+                <pre><code class="language-java">System.out.println(marks[5]); // Index 5 out of bounds for length 3
+// Fix: Check array bounds
+if (index >= 0 && index < marks.length) { ... }</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>This cheat sheet covers core concepts from basics to advanced topics. For more detailed information, refer to the official <a href="https://docs.oracle.com/javase/tutorial/">Java documentation</a>.</p>
+        </section>
+    </main>
+    <button id="go-to-top" aria-label="Go to Top">⬆️</button>
+    <footer>
+        <p>© 2025 Java Cheat Sheet</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
